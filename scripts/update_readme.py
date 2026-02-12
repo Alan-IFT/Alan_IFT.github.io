@@ -13,8 +13,8 @@ def get_blog_posts():
     for file in blog_dir.glob('*.md'):
         # 获取文件名（不含扩展名）作为标题
         title = file.stem
-        # URL 编码文件路径
-        url = f"blog/{quote(file.name)}"
+        # URL 编码文件路径，并将 .md 替换为 .html
+        url = f"blog/{quote(file.stem)}.html"
         # 获取文件修改时间用于排序
         mtime = file.stat().st_mtime
         posts.append((title, url, mtime))
