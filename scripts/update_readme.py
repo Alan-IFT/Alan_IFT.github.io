@@ -4,17 +4,17 @@ from pathlib import Path
 from urllib.parse import quote
 
 def get_blog_posts():
-    """扫描 bolg 目录获取所有 Markdown 文件"""
-    bolg_dir = Path('bolg')
-    if not bolg_dir.exists():
+    """扫描 blog 目录获取所有 Markdown 文件"""
+    blog_dir = Path('blog')
+    if not blog_dir.exists():
         return []
     
     posts = []
-    for file in bolg_dir.glob('*.md'):
+    for file in blog_dir.glob('*.md'):
         # 获取文件名（不含扩展名）作为标题
         title = file.stem
         # URL 编码文件路径
-        url = f"bolg/{quote(file.name)}"
+        url = f"blog/{quote(file.name)}"
         # 获取文件修改时间用于排序
         mtime = file.stat().st_mtime
         posts.append((title, url, mtime))
